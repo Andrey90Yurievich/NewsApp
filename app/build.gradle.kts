@@ -1,6 +1,21 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+
+    //alias(libs.plugins.room)
+    alias(libs.plugins.hilt)
+    //alias(libs.plugins.glide)
+    alias(libs.plugins.ksp)
+
+
+    alias(libs.plugins.compose.compiler)
+
+
+    //id 'kotlin-android-extensions'
+    //id 'kotlin-kapt'
+    //id 'androidx.navigation.safeargs.kotlin'
+    //id 'dagger.hilt.android.plugin'
+
 }
 
 android {
@@ -38,6 +53,7 @@ android {
     }
     buildFeatures {
         compose = true
+        viewBinding = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
@@ -66,4 +82,57 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+
+// Lifecycle
+    implementation (libs.androidx.lifecycle.viewmodel.ktx)
+    implementation (libs.androidx.lifecycle.runtime.ktx.v241)
+    implementation (libs.androidx.lifecycle.viewmodel.ktx.v241)
+
+// Room
+    implementation (libs.androidx.room.runtime)
+    implementation (libs.androidx.room.ktx)
+    ksp (libs.androidx.room.compiler)
+
+// Coroutines
+    implementation (libs.kotlinx.coroutines.core)
+    implementation (libs.kotlinx.coroutines.android)
+
+// Hilt
+    implementation (libs.hilt.android)
+    implementation (libs.androidx.hilt.navigation.compose)
+    ksp (libs.hilt.compiler)
+
+
+// Retrofit
+    implementation (libs.retrofit)
+    implementation (libs.converter.gson)
+
+// OkHTTP
+    implementation (libs.logging.interceptor)
+
+// Navigation Components
+    implementation (libs.androidx.navigation.fragment.ktx)
+    implementation (libs.androidx.navigation.ui.ktx)
+
+// Glide
+    implementation (libs.glide)
+    ksp (libs.compiler)
+
+    implementation(libs.coil.compose)
+
+    implementation (libs.google.accompanist.systemuicontroller)
+
+    implementation (libs.androidx.core.splashscreen)
+
+    implementation (libs.androidx.datastore.preferences)
+
+
+
+    implementation (libs.androidx.paging.runtime.ktx)
+    implementation (libs.androidx.paging.compose)
+
+    implementation (libs.androidx.foundation)
+
+
 }
