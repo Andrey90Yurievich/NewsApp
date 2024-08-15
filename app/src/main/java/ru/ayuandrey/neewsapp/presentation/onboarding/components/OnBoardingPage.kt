@@ -1,0 +1,69 @@
+package ru.ayuandrey.neewsapp.presentation.onboarding.components
+
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
+import ru.ayuandrey.neewsapp.R
+import ru.ayuandrey.neewsapp.presentation.Dimens.MediumPadding1
+import ru.ayuandrey.neewsapp.presentation.Dimens.MediumPadding2
+import ru.ayuandrey.neewsapp.presentation.onboarding.Page
+import ru.ayuandrey.neewsapp.ui.theme.NewsAppTheme
+
+@Composable
+fun OnBoardingPage(                                                      //страница доски страниц
+    modifier: Modifier = Modifier,
+    page: Page,                                                          //параметром принимает page - страница типа Page или наследовав класс
+) {
+    Column(modifier = modifier) {
+        Image(
+            modifier = Modifier
+                .fillMaxWidth()
+                .fillMaxHeight(0.60f),
+            painter = painterResource(id = page.image),
+            contentDescription = null,
+            contentScale = ContentScale.Crop                               //обрезает изображение по центру в весь экран
+        )
+        Spacer(modifier = Modifier.height(MediumPadding1))                  //пространство на высоту хз
+        Text(
+            modifier = Modifier.padding(horizontal = MediumPadding2),
+            text = page.title,                                              //заголовок присваивается из списка объектов страниц
+            style = MaterialTheme.typography.displaySmall.copy(fontWeight = FontWeight.Bold),
+            color = colorResource(id = R.color.display_small)
+        )
+        Text(
+            modifier = Modifier.padding(horizontal = MediumPadding2),
+            text = page.description,
+            style = MaterialTheme.typography.bodyMedium,
+            color = colorResource(id = R.color.text_medium)
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Preview(uiMode = UI_MODE_NIGHT_YES)
+@Composable
+fun OnBoardingPagePreview() {
+    NewsAppTheme {
+        OnBoardingPage(
+            page = Page(
+                title = "Lorem Ipsum is simply dummy",
+                description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+                image = R.drawable.onboarding1
+            )
+        )
+    }
+}
