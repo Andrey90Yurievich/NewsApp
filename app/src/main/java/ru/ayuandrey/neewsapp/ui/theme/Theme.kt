@@ -38,13 +38,12 @@ private val LightColorScheme = lightColorScheme(
 )
 
 @Composable
-fun NeewsAppTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
-    // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
-    content: @Composable () -> Unit
+fun NewsAppTheme(                                               //функция темы
+    darkTheme: Boolean = isSystemInDarkTheme(),                 //темная тема параметр логического типа, исходя из установки ночного или дневного режима на эмуляторе
+    dynamicColor: Boolean = false,                              //
+    content: @Composable () -> Unit                             //аннотация @Composable помечает передаваемую параметру content функцию как Composable-функцию.
 ) {
-    val colorScheme = when {
+    val colorScheme = when {                                    //цветовая гамма/ когда
         dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
             val context = LocalContext.current
             if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
