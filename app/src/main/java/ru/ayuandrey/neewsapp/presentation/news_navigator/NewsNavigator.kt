@@ -135,6 +135,7 @@ fun NewsNavigator() {                                                           
             }
             composable(route = Route.DetailsScreen.route) {     //экран деталей
                 val viewModel: DetailsViewModel = hiltViewModel()                                    //создается объект вью модели
+<<<<<<< HEAD
                 navController.previousBackStackEntry?.savedStateHandle?.get<Article?>("article")      //создание карты с данными
                     ?.let { article ->                                                                //если не налл, то статью передаем в экран деталей
                         DetailsScreen(                                                                //экран с деталями
@@ -142,6 +143,15 @@ fun NewsNavigator() {                                                           
                             event = viewModel::onEvent,                                                  //события по нажатию на кнопки
                             navigateUp = { navController.navigateUp() },                              //навигация по иконкам
                             sideEffect = viewModel.sideEffect                                          //хз
+=======
+                navController.previousBackStackEntry?.savedStateHandle?.get<Article?>("article")
+                    ?.let { article ->
+                        DetailsScreen(
+                            article = article,
+                            event = viewModel::onEvent,
+                            navigateUp = { navController.navigateUp() },
+                            sideEffect = viewModel.sideEffect
+>>>>>>> origin/lesson7
                         )
                     }
 

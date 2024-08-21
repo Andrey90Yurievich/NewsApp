@@ -21,6 +21,7 @@ import ru.ayuandrey.neewsapp.ui.theme.NewsAppTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
+<<<<<<< HEAD
 fun DetailsTopBar(                                                   //бфр с кнопками
     onBrowsingClick: () -> Unit,                                     //кнопка перехода в браузер
     onShareClick: () -> Unit,                                           //кнопка поделится
@@ -29,6 +30,16 @@ fun DetailsTopBar(                                                   //бфр с
 ) {
 
     TopAppBar(                                                          //
+=======
+fun DetailsTopBar(
+    onBrowsingClick: () -> Unit,
+    onShareClick: () -> Unit,
+    onBookMarkClick: () -> Unit,
+    onBackClick: () -> Unit,
+) {
+
+    TopAppBar(
+>>>>>>> origin/lesson7
         modifier = Modifier.fillMaxWidth(),
         colors = TopAppBarDefaults.mediumTopAppBarColors(
             containerColor = Color.Transparent,
@@ -37,7 +48,11 @@ fun DetailsTopBar(                                                   //бфр с
         ),
         title = {},
         navigationIcon = {
+<<<<<<< HEAD
             IconButton(onClick = onBackClick) {                           //КНОПКА НАЗАД
+=======
+            IconButton(onClick = onBackClick) {
+>>>>>>> origin/lesson7
                 Icon(
                     painter = painterResource(id = R.drawable.ic_back_arrow),
                     contentDescription = null,
@@ -46,19 +61,31 @@ fun DetailsTopBar(                                                   //бфр с
         },
         actions = {
 
+<<<<<<< HEAD
             IconButton(onClick = onBookMarkClick) {                          //кнопка закладка
+=======
+            IconButton(onClick = onBookMarkClick) {
+>>>>>>> origin/lesson7
                 Icon(
                     painter = painterResource(id = R.drawable.ic_bookmark),
                     contentDescription = null
                 )
             }
+<<<<<<< HEAD
             IconButton(onClick = onShareClick) {                               //кнопка поделится
+=======
+            IconButton(onClick = onShareClick) {
+>>>>>>> origin/lesson7
                 Icon(
                     imageVector = Icons.Default.Share,
                     contentDescription = null
                 )
             }
+<<<<<<< HEAD
             IconButton(onClick = onBrowsingClick) {                           //найти в интеренете
+=======
+            IconButton(onClick = onBrowsingClick) {
+>>>>>>> origin/lesson7
                 Icon(
                     painter = painterResource(id = R.drawable.ic_network),
                     contentDescription = null

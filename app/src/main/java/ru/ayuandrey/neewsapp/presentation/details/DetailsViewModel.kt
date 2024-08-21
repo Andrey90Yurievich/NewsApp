@@ -27,6 +27,7 @@ class DetailsViewModel @Inject constructor(
     fun onEvent(event: DetailsEvent) {                                              //событие
         when (event) {
             is DetailsEvent.UpsertDeleteArticle -> {                                 //Обновить и удалить статью
+<<<<<<< HEAD
                 viewModelScope.launch {                                  //в области корутины вью модель
                     val article = getSavedArticleUseCase(url = event.article.url)      //сохраненная статья - принмает урл статьи
                     if (article == null){                                              //если статья пустая приходит
@@ -38,10 +39,24 @@ class DetailsViewModel @Inject constructor(
             }
             is DetailsEvent.RemoveSideEffect ->{                                        //если детали статьи типа хз
                 sideEffect = null                                                         //то побочный эфект налл
+=======
+                viewModelScope.launch {
+                    val article = getSavedArticleUseCase(url = event.article.url)      //
+                    if (article == null){
+                        upsertArticle(article = event.article)
+                    }else{
+                        deleteArticle(article = event.article)
+                    }
+                }
+            }
+            is DetailsEvent.RemoveSideEffect ->{
+                sideEffect = null
+>>>>>>> origin/lesson7
             }
         }
     }
 
+<<<<<<< HEAD
     private suspend fun deleteArticle(article: Article) {                                //удалить статью
         deleteArticleUseCase(article = article)
         sideEffect = UIComponent.Toast("Article deleted")                                 //закладка
@@ -50,6 +65,16 @@ class DetailsViewModel @Inject constructor(
     private suspend fun upsertArticle(article: Article) {                                //заменить статью
         upsertArticleUseCase(article = article)                                          //
         sideEffect = UIComponent.Toast("Article Inserted")                               //в тост сообщении вывести строку
+=======
+    private suspend fun deleteArticle(article: Article) {
+        deleteArticleUseCase(article = article)
+        sideEffect = UIComponent.Toast("Article deleted")
+    }
+
+    private suspend fun upsertArticle(article: Article) {
+        upsertArticleUseCase(article = article)
+        sideEffect = UIComponent.Toast("Article Inserted")
+>>>>>>> origin/lesson7
     }
 
 }

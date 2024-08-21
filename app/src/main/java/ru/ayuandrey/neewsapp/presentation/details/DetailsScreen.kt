@@ -34,6 +34,7 @@ import ru.ayuandrey.neewsapp.util.UIComponent
 
 
 @Composable
+<<<<<<< HEAD
 fun DetailsScreen(                                                           //экран деталей
     article: Article,                                                        //принимает статью
     event: (DetailsEvent) -> Unit,                                           //лямбда принмает параметр объект типа DetailsEvent
@@ -50,6 +51,24 @@ fun DetailsScreen(                                                           //�
                     event(DetailsEvent.RemoveSideEffect)                          //убрвть тост с экрана
                 }
                 else -> Unit                                                          //иначе вернуть / ничего не вернуть
+=======
+fun DetailsScreen(
+    article: Article,
+    event: (DetailsEvent) -> Unit,
+    sideEffect: UIComponent?,
+    navigateUp: () -> Unit
+) {
+    val context = LocalContext.current
+
+    LaunchedEffect(key1 = sideEffect) {
+        sideEffect?.let {
+            when(sideEffect){
+                is UIComponent.Toast ->{
+                    Toast.makeText(context, sideEffect.message, Toast.LENGTH_SHORT).show()
+                    event(DetailsEvent.RemoveSideEffect)
+                }
+                else -> Unit
+>>>>>>> origin/lesson7
             }
         }
     }
@@ -59,9 +78,15 @@ fun DetailsScreen(                                                           //�
             .fillMaxSize()
             .statusBarsPadding()
     ) {
+<<<<<<< HEAD
         DetailsTopBar(                                                        //бар с иконкаими
             onBrowsingClick = {                                               //
                 Intent(Intent.ACTION_VIEW).also {                        //
+=======
+        DetailsTopBar(
+            onBrowsingClick = {
+                Intent(Intent.ACTION_VIEW).also {
+>>>>>>> origin/lesson7
                     it.data = Uri.parse(article.url)
                     if (it.resolveActivity(context.packageManager) != null) {
                         context.startActivity(it)
@@ -80,7 +105,11 @@ fun DetailsScreen(                                                           //�
             onBookMarkClick = {
                 event(DetailsEvent.UpsertDeleteArticle(article))
             },
+<<<<<<< HEAD
             onBackClick = navigateUp                                       //вернуться
+=======
+            onBackClick = navigateUp
+>>>>>>> origin/lesson7
         )
 
         LazyColumn(
